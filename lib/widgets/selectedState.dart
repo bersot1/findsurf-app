@@ -1,19 +1,20 @@
+import 'package:findsurf_app/bloc/checkPage.dart';
 import 'package:findsurf_app/bloc/homePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
-class FSSearchBar extends StatefulWidget {
+class FSSelectedState extends StatefulWidget {
   @override
-  _FSSearchBarState createState() => _FSSearchBarState();
+  _FSSelectedStateState createState() => _FSSelectedStateState();
 }
 
-class _FSSearchBarState extends State<FSSearchBar> {
-  List<String> items = ["Vitoria", "Vila Velha", "Serra", "Cariacica"];
+class _FSSelectedStateState extends State<FSSelectedState> {
+  List<String> listState = ["Espirito Santo", "Rio de Janeiro", "São Paulo"];
 
   @override
   Widget build(BuildContext context) {
-    final HomePageBloc bloc = Provider.of<HomePageBloc>(context);
+    final CheckPageBloc bloc = Provider.of<CheckPageBloc>(context);
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 50),
       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
@@ -45,8 +46,8 @@ class _FSSearchBarState extends State<FSSearchBar> {
               isExpanded: true,
               icon: SvgPicture.asset("assets/icons/dropdown.svg"),
               underline: SizedBox(),
-              value: bloc.citySelected,
-              items: items.map<DropdownMenuItem<String>>(
+              value: bloc.stateSelected,
+              items: listState.map<DropdownMenuItem<String>>(
                 (String value) {
                   return DropdownMenuItem<String>(
                     value: value,
@@ -56,7 +57,7 @@ class _FSSearchBarState extends State<FSSearchBar> {
               ).toList(),
               onChanged: (value) {
                 setState(() {
-                  bloc.changeCity(value);
+                  bloc.changeState(value);
                 });
               },
             ),

@@ -3,9 +3,15 @@ import 'package:flutter/material.dart';
 
 class FSProductCard extends StatelessWidget {
   String path;
+  String title;
+  String status;
+  String price;
 
   FSProductCard({
     @required this.path,
+    @required this.title,
+    this.status,
+    this.price,
   });
 
   @override
@@ -58,7 +64,7 @@ class FSProductCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              "Prancha Science",
+              title,
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
               style: TextStyle(
@@ -67,7 +73,7 @@ class FSProductCard extends StatelessWidget {
                   color: Colors.white),
             ),
             Text(
-              "Nova",
+              status,
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
               style: TextStyle(
@@ -78,7 +84,7 @@ class FSProductCard extends StatelessWidget {
             Row(
               children: <Widget>[
                 Text(
-                  "R\$ 800,00",
+                  price,
                   style: TextStyle(fontSize: 9.0, fontWeight: FontWeight.bold),
                 ),
               ],

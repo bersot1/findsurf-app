@@ -1,5 +1,7 @@
+import 'package:findsurf_app/bloc/checkPage.dart';
 import 'package:findsurf_app/bloc/homePage.dart';
 import 'package:findsurf_app/pages/homePage.dart';
+import 'package:findsurf_app/sidebar/sidebarlayout.dart';
 import 'package:findsurf_app/themes/appTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -16,6 +18,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<HomePageBloc>.value(
           value: HomePageBloc(),
         ),
+        ChangeNotifierProvider<CheckPageBloc>.value(
+          value: CheckPageBloc(),
+        ),
       ],
       child: Main(),
     );
@@ -29,7 +34,7 @@ class Main extends StatelessWidget {
       title: 'FindSurf',
       debugShowCheckedModeBanner: false,
       theme: appTheme(),
-      home: HomePage(),
+      home: SideBarLayout(),
     );
   }
 }

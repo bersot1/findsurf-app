@@ -1,4 +1,5 @@
 import 'package:findsurf_app/bloc/homePage.dart';
+import 'package:findsurf_app/bloc/navigations/navigation.dart';
 import 'package:findsurf_app/widgets/categoryList.dart';
 import 'package:findsurf_app/widgets/header.dart';
 import 'package:findsurf_app/widgets/productCard.dart';
@@ -6,12 +7,17 @@ import 'package:findsurf_app/widgets/searchBar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatelessWidget with NavigationStates {
   @override
   Widget build(BuildContext context) {
     // final HomePageBloc bloc = Provider.of<HomePageBloc>(context);
     final HomePageBloc bloc = Provider.of<HomePageBloc>(context);
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
+        backgroundColor: Color(0xFF008784),
+      ),
       backgroundColor: Color(0xFFf1f1f1),
       body: SafeArea(
         top: false,
@@ -68,7 +74,11 @@ class HomePage extends StatelessWidget {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20)),
                         child: FSProductCard(
-                            path: "https://picsum.photos/200/300"),
+                          path: "https://picsum.photos/200/300",
+                          title: "Prancha Nova",
+                          price: "100",
+                          status: "Nova",
+                        ),
                       ),
                     );
                   },
